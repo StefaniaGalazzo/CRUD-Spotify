@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="it">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Spotify</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css"
+    />
+    <link rel="stylesheet" href="assets/css/style.css" />
+  </head>
+  <body class="bg-black" data-bs-theme="dark">
+    <main>
+      <div class="container-fluid overflow-hidden py-0">
+        <div class="row" style="min-height: calc(100vh - 88px)">
+          <!-- SIDEBAR  SINISTRA -->
+          <div class="col-2">
+            <nav class="nav flex-column">
+              <div>
+                <button
+                  class="navbar-toggler"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#navbarToggleExternalContent"
+                  aria-controls="navbarToggleExternalContent"
+                  aria-expanded="false"
+                  aria-label="Toggle navigation"
+                >
+                  <span> <i class="bi bi-three-dots"></i></span>
+                </button>
+              </div>
+              <div
+                class="collapse"
+                id="navbarToggleExternalContent"
+                data-bs-theme="dark"
+              >
+                <ul>
+                  <li>Modifica</li>
+                  <li>Impostazioni</li>
+                </ul>
+              </div>
+
+              <div id="navDiv1">
+                <ul class="navbar-nav">
+                  <li class="nav-item">
+                    <a class="nav-link" href="index.html">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="20"
+                        height="20"
+                        fill="currentColor"
+                        class="bi bi-house-door-fill"
+                        viewBox="0 0 16 16"
+                      >
+                        <path
+                          d="M6.5 14.5v-3.505c0-.245.25-.495.5-.495h2c.25 0 .5.25.5.5v3.5a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5"
+                        />
+                      </svg>
+                      <p class="d-inline px-1">Home</p>
+                    </a>
+                  </li>
+
+                  <li class="nav-item">
+                    <a class="nav-link" href="search.html">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="20"
+                        height="20"
+                        fill="currentColor"
+                        class="bi bi-search"
+                        viewBox="0 0 16 16"
+                      >
+                        <path
+                          d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"
+                        ></path>
+                      </svg>
+                      <p class="d-inline px-1">Cerca</p>
+                    </a>
+                  </li>
+
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="20"
+                        height="20"
+                        fill="currentColor"
+                        class="bi bi-collection-play-fill"
+                        viewBox="0 0 16 16"
+                      >
+                        <path
+                          d="M2.5 3.5a.5.5 0 0 1 0-1h11a.5.5 0 0 1 0 1h-11zm2-2a.5.5 0 0 1 0-1h7a.5.5 0 0 1 0 1h-7zM0 13a1.5 1.5 0 0 0 1.5 1.5h13A1.5 1.5 0 0 0 16 13V6a1.5 1.5 0 0 0-1.5-1.5h-13A1.5 1.5 0 0 0 0 6v7zm6.258-6.437a.5.5 0 0 1 .507.013l4 2.5a.5.5 0 0 1 0 .848l-4 2.5A.5.5 0 0 1 6 12V7a.5.5 0 0 1 .258-.437z"
+                        ></path>
+                      </svg>
+                      <p class="d-inline px-1">La tua libreria</p>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+
+              <div id="nav2" class="pt-3">
+                <ul class="navbar-nav">
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">
+                      <svg
+                        id="create-playlist"
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="20"
+                        height="20"
+                        fill="currentColor"
+                        class="bi bi-plus-square-fill"
+                        viewBox="0 0 16 16"
+                      >
+                        <path
+                          d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm6.5 4.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3a.5.5 0 0 1 1 0z"
+                        />
+                      </svg>
+                      <p class="d-inline px-1">Crea play list</p>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">
+                      <svg
+                        id="liked-songs"
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="20"
+                        height="20"
+                        fill="currentColor"
+                        class="bi bi-heart-fill"
+                        viewBox="0 0 16 16"
+                      >
+                        <path
+                          fill-rule="evenodd"
+                          d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"
+                        />
+                      </svg>
+                      <p class="d-inline px-1">Brani che ti piacciono</p>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">
+                      <svg
+                        id="saved-episodes"
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="20"
+                        height="20"
+                        fill="currentColor"
+                        class="bi bi-bookmark-fill"
+                        viewBox="0 0 16 16"
+                      >
+                        <path
+                          d="M2 2v13.5a.5.5 0 0 0 .74.439L8 13.069l5.26 2.87A.5.5 0 0 0 14 15.5V2a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2z"
+                        />
+                      </svg>
+                      <p class="d-inline px-1">I tuoi episodi</p>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+
+              <hr />
+
+              <div
+                id="scrollbar-right"
+                class="scrollbar overflow-y-scroll overflow-hidden"
+                style="max-height: 42vh"
+              >
+                <ul id="containerSideList" class="list-group">
+                  <!-- <li class="my-2">Elemento 1</li>
+                  <li class="my-2">Elemento 2</li>
+                  <li class="my-2">Elemento 3</li>
+                  <li class="my-2">Elemento 4</li>
+                  <li class="my-2">Elemento 5</li>
+                  <li class="my-2">Elemento 1</li>
+                  <li class="my-2">Elemento 2</li>
+                  <li class="my-2">Elemento 3</li>
+                  <li class="my-2">Elemento 4</li>
+                  <li class="my-2">Elemento 5</li>
+                  <li class="my-2">Elemento 1</li>
+                  <li class="my-2">Elemento 2</li>
+                  <li class="my-2">Elemento 3</li>
+                  <li class="my-2">Elemento 4</li>
+                  <li class="my-2">Elemento 5</li>
+                  <li class="my-2">Elemento 1</li>
+                  <li class="my-2">Elemento 2</li>
+                  <li class="my-2">Elemento 3</li>
+                  <li class="my-2">Elemento 4</li>
+                  <li class="my-2">Elemento 5</li> -->
+                </ul>
+              </div>
+            </nav>
+          </div>
+          <!-- fine sidebar sinistra -->
+
+          <!-- COLONNA CENTRALE -->
+          <div
+            class="col-8 pt-3 py-3 px-4 bg-linear-to-trasp position-relative bg-top-album-page overflow-y-scroll scrollbar overflow-x-hidden"
+            style="max-height: calc(100vh - 88px)"
+          >
+            <div class="row sticky-top">
+              <div class="col">
+                <div class="row">
+                  <div
+                    class="col-1 text-center p-0 me-3 bg-black rounded-pill"
+                    style="max-width: 25px; max-height: 25px"
+                  >
+                    <i id="goBack" class="bi bi-chevron-left"></i>
+                  </div>
+                  <div
+                    class="col-1 text-center p-0 bg-black rounded-pill"
+                    style="max-width: 25px; max-height: 25px"
+                  >
+                    <i id="goForward" class="bi bi-chevron-right"></i>
+                  </div>
+                </div>
+              </div>
+              <div class="col-2 ms-auto text-end">
+                <div class="dropdown">
+                  <i
+                    class="bi bi-people"
+                    id="peopleIcon"
+                    onclick="mostraColonna()"
+                  ></i>
+                  <button
+                    class="fs-11px p-1 pe-2 border-0 rounded-pill bg-black btn btn-secondary dropdown-toggle"
+                    type="button"
+                    id="dropdownMenuButton1"
+                    data-bs-toggle="dropdown"
+                    aria-expanded="false"
+                  >
+                    <img
+                      src="
+                https://images.unsplash.com/photo-1587300003388-59208cc962cb?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                      alt="image utente"
+                      width="20px"
+                      height="20px"
+                      class="rounded-pill"
+                    />
+                    <p class="m-0 mt-1 d-inline">Chiara Cioccarelli</p>
+                  </button>
+                  <ul
+                    class="dropdown-menu"
+                    aria-labelledby="dropdownMenuButton1"
+                  >
+                    <li>
+                      <a class="dropdown-item" href="index.html">Account</a>
+                    </li>
+                    <li>
+                      <a class="dropdown-item" href="#">Impostazioni</a>
+                    </li>
+                    <li>
+                      <hr />
+                      <a class="dropdown-item" href="#">Esci</a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <!-- hero -->
+            <div id="hero-artist" class="textartist mt-auto">
+              <img
+                src="https://rare-gallery.com/thumbs/4560442-arms-up-podiums-concerts-lights.jpg"
+                alt="img-artist"
+                width="100%"
+              />
+              <div class="text-hero">
+                <div class="bi bi-patch-check text-white">Verified Artist</div>
+                <h1 class="text-white">Yellow Card</h1>
+                <div class="fw-bold mt-3 text-white">
+                  <span class="numeriascoltatori">3.433.158</span> ascoltatori
+                  mensili
+                </div>
+              </div>
+            </div>
+            <!--fine hero-->
+
+            <!-- inizio parte centrale bassa -->
+            <div class="row g-6" style="margin-top: 390px">
+              <div class="d-flex align-items-center mb-4">
+                <i class="playBtn color-green fs-2 bi bi-play-circle-fill"></i>
+                <button class="btn mx-3 btn-dark text-uppercase fs-11px">
+                  following
+                </button>
+                <button
+                  class="navbar-toggler"
+                  type="button"
+                  data-bs-toggle="collapse"
+                >
+                  <span> <i class="bi bi-three-dots"></i></span>
+                </button>
+              </div>
+              <div class="col-7">
+                <h5 class="text-white mb-3">Popolari</h5>
+                <ol id="containerArtistSongs" class="p-0 list-group-numbered">
+                  <li class="list-group-item d-flex mb-3 align-items-center">
+                    <div
+                      class="overflow-hidden rounded ms-4 me-5"
+                      style="max-width: 80px; max-height: 80px"
+                    >
+                      <img
+                        src="https://images.unsplash.com/photo-1679850988136-5c5d78237d03?q=80&w=2063&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                        class="rounded"
+                        alt="img-album"
+                        width="auto"
+                        height="80px"
+                      />
+                    </div>
+                    <p class="mb-0 me-5">Titolo Canzone</p>
+                    <!--volte in cui è stato ascoltato un brano-->
+                    <p class="mb-0">666.666.666</p>
+                    <!--durata della canzone (currentsong.duration)-->
+                    <p class="mb-0 ms-auto">3:33</p>
+                  </li>
+                </ol>
+                <h6>Visualizza altro</h6>
+              </div>
+              <div class="col-4 ms-auto">
+                <h5 class="text-white">Brani che ti piacciono</h5>
+                <div class="row">
+                  <div
+                    class="overflow-hidden rounded-circle p-0"
+                    style="max-width: 80px; max-height: 80px"
+                  >
+                    <img
+                      src="https://images.unsplash.com/photo-1679850988136-5c5d78237d03?q=80&w=2063&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                      alt="img-album"
+                      width="auto"
+                      height="80px"
+                    />
+                  </div>
+                  <div class="col">
+                    <p class="text-bold text-white">
+                      Hai messo Mi piace a 11 brani
+                    </p>
+                    <p id="artistLikes" class="fs-11px"></p>
+                  </div>
+                </div>
+              </div>
+              <!-- fine parte centrale bassa -->
+            </div>
+          </div>
+          <!-- fine colonna centrale -->
+
+          <!-- SIDEBAR  DESTRA -->
+          <div id="mainRightOpened" class="col-2">
+            <div class="row mb-3 align-items-center">
+              <div class="col">
+                <h5 class="mt-2 mb-0">Attività amici</h5>
+              </div>
+              <div class="col col-2 fs-5">
+                <i id="closeRight" class="bi-person-plus"></i>
+              </div>
+              <div class="col col-2 fs-5">
+                <span class="close-btn" onclick="nascondiColonna()">x</span>
+              </div>
+            </div>
+            <div
+              class="overflow-y-scroll overflow-hidden scrollbar"
+              style="min-height: 75vh; max-height: 75vh"
+            >
+              <div class="row my-2">
+                <div class="col-1"><i class="bi bi-person-circle"></i></div>
+                <div class="col">
+                  <h6>Chiara Cioccarelli</h6>
+                  <p class="my-0 fs-11px">In Camera • Yumi Zouma</p>
+                  <p class="fs-11px"><i class="bi bi-disc"></i> EP III</p>
+                </div>
+                <div class="col-3 p-0 fs-6 ms-auto">4h fa</div>
+              </div>
+              <div class="row">
+                <div class="col-1"><i class="bi bi-person-circle"></i></div>
+                <div class="col col-7">
+                  <h6>Stefania Galazzo</h6>
+                  <p class="my-0 fs-11px">Aimed to Kill • Jade LeMac</p>
+                  <p class="fs-11px">
+                    <i class="bi bi-disc"></i> Aimed to Kill
+                  </p>
+                </div>
+                <div class="col-3 p-0 fs-6 ms-auto">6h fa</div>
+              </div>
+              <div class="row">
+                <div class="col-1"><i class="bi bi-person-circle"></i></div>
+                <div class="col col-7">
+                  <h6>Gerta Koni</h6>
+                  <p class="my-0 fs-11px">New Kings • Sleeping Wolf</p>
+                  <p class="fs-11px">
+                    <i class="bi bi-music-note-beamed"></i> Twint Badass mood
+                  </p>
+                </div>
+                <div class="col-3 p-0 fs-6 ms-auto">8h fa</div>
+              </div>
+              <div class="row">
+                <div class="col-1"><i class="bi bi-person-circle"></i></div>
+                <div class="col col-7">
+                  <h6>Federico Mottola</h6>
+                  <p class="my-0 fs-11px">In Banca • Money</p>
+                  <p class="fs-11px"><i class="bi bi-bank"></i> Banca Money</p>
+                </div>
+                <div class="col-3 p-0 fs-6 ms-auto">12h fa</div>
+              </div>
+              <div class="row">
+                <div class="col-1"><i class="bi bi-person-circle"></i></div>
+                <div class="col col-7">
+                  <h6>Michele Martone</h6>
+                  <p class="my-0 fs-11px">New Kings • Sleeping Wolf</p>
+                  <p class="fs-11px">
+                    <i class="bi bi-music-note-beamed"></i> Twint Badass mood
+                  </p>
+                </div>
+                <div class="col-3 p-0 fs-6 ms-auto">2h fa</div>
+              </div>
+            </div>
+          </div>
+          <!-- fine sidebar destra -->
+        </div>
+      </div>
+
+      <!-- ACTIONS BAR  -->
+      <div
+        id="mainActions"
+        class="container-fluid bg-dark py-2 px-3 position-fixed bottom-0 justify-content-center align-items-center"
+      >
+        <div class="row justify-content-center">
+          <div class="col-md-3 align-items-center justify-content-start">
+            <div class="row align-items-center">
+              <div
+                class="col-3 ms-2 overflow-hidden rounded p-0"
+                style="max-height: 70px; max-width: 70px"
+              >
+                <img class="imgsCover" width="100px" alt="album" />
+              </div>
+              <div class="col-3 px-2">
+                <h5 id="songTitleActionBar" class="text-white mb-0">Title</h5>
+                <span
+                  id="artistTitleActionBar"
+                  class="text-secondary fs-6 fw-normal"
+                  >Artist</span
+                >
+              </div>
+              <div class="col">
+                <i class="bi bi-heart text-white"></i>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div
+              id="actions"
+              class="row text-white fs-2 justify-content-center align-items-center"
+            >
+              <div class="col-1 fs-5">
+                <i id="shuffle" class="col bi bi-shuffle"></i>
+              </div>
+              <div class="col-1">
+                <i id="prevBtn" class="col bi bi-caret-left-fill"></i>
+              </div>
+              <div class="col-1">
+                <i class="playBtn col bi bi-play-circle-fill"></i>
+              </div>
+              <div class="col-1">
+                <i id="nextBtn" class="col bi bi-caret-right-fill"></i>
+              </div>
+              <div class="col-1 fs-5">
+                <i id="repeat" class="bi bi-repeat"></i>
+              </div>
+            </div>
+            <div class="row justify-content-center align-items-center">
+              <div class="col">
+                <span class="fs-6 text-secondary">0:58</span>
+              </div>
+              <div class="col-10">
+                <input
+                  id="barTrack"
+                  type="range"
+                  class="w-100"
+                  data-label="song seconds"
+                />
+              </div>
+              <div class="col">
+                <span class="fs-6 text-secondary">0:58</span>
+              </div>
+            </div>
+          </div>
+          <div
+            class="col-md-3 d-flex align-items-center justify-content-end fs-2"
+          >
+            <div class="row align-items-center text-secondary fs-6">
+              <div class="col p-1">
+                <i class="bi bi-mic px-1"></i>
+              </div>
+              <div class="col p-1">
+                <i class="bi bi-list px-1"></i>
+              </div>
+              <div class="col p-1">
+                <i class="bi bi-grid-1x2 px-1"></i>
+              </div>
+              <div class="col p-1 pe-0 fs-4">
+                <i class="bi bi-volume-down"></i>
+              </div>
+              <div class="col ps-0 p-1">
+                <input type="range" />
+              </div>
+              <div class="col p-1">
+                <i class="bi bi-arrows-angle-expand px-1"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- fine actions bar  -->
+    </main>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+      crossorigin="anonymous"
+    ></script>
+    <script src="./assets/js/artist.js"></script>
+  </body>
+</html>
