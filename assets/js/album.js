@@ -1,3 +1,5 @@
+import * as actionsBar from "./actionsBar.js";
+
 let pageURL = window.location.search;
 const productId = new URLSearchParams(pageURL).get("id");
 // myUrl = "https://api.deezer.com/album/"
@@ -5,8 +7,7 @@ const productId = new URLSearchParams(pageURL).get("id");
 // header: {
 //   "Access-Control-Allow-Origin": `${myUrl}/${productId}/tracks`
 // }
-let myUrl =
-  "https://striveschool-api.herokuapp.com/api/deezer/album/" + productId;
+let myUrl = `https://striveschool-api.herokuapp.com/api/deezer/album/${productId}`;
 
 let newArrayAlbums = localStorage.getItem("arrayAlbums");
 newArrayAlbums = JSON.parse(newArrayAlbums);
@@ -25,7 +26,7 @@ function getDataAlbum() {
   })
     .then((response) => response.json())
     .then((data) => {
-      console.log(data, "io sono l'array album");
+      // console.log(data, "io sono l'array album");
       populateHero(data);
       populateSongsList(data);
     })
@@ -52,15 +53,13 @@ function printSideList(array) {
   for (let i = 0; i < array.length; i++) {
     const newItem = document.createElement("li");
     newItem.classList.add("my-1");
-
     newItem.innerText = `${array[i].title}`;
-
     containerSideList.appendChild(newItem);
   }
 }
 
 function populateHero(data) {
-  console.log(data, "io sono l'array della hero");
+  // console.log(data, "array hero");
   let durationInMinutes = data.duration / 60;
   let durationTwoDecimals = durationInMinutes.toFixed(2);
   let durationFourNumbers =
@@ -105,7 +104,6 @@ function populateHero(data) {
       </p>
     </div>`;
   containerAlbum.innerHTML = newAlbum;
-  // console.log(array[0]);
   const artistLink = document.querySelectorAll(".artistLink");
   artistLink.forEach((el) => {
     const dataId = el.getAttribute("data-id");
@@ -127,9 +125,7 @@ function populateHero(data) {
   artistTitleActionBar.innerText = data.artist.name;
 }
 function toBlur(img) {
-  console.log(img, "imgblur");
   const imgBlur = document.querySelector("#imgBlurred");
-  // backgroundBlur.style.backgroundImage = `url(${img})`;
   imgBlur.setAttribute("src", `${img}`);
 }
 // cambio pagina

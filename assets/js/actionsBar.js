@@ -1,4 +1,7 @@
 // script for the <div id="mainActions"> in all html pages
+let pageURL = window.location.search;
+const productId = new URLSearchParams(pageURL).get("id");
+const albumUrl = `https://striveschool-api.herokuapp.com/api/deezer/album/${productId}`;
 
 const myUrl = "https://striveschool-api.herokuapp.com/api/deezer/search?q=";
 
@@ -15,19 +18,55 @@ let isTrackChanged = false;
 let arraySongs = localStorage.getItem("arraySongs");
 arraySongs = JSON.parse(arraySongs);
 
+function getDataAlbum() {
+  return new Promise((resolve, reject) => {
+    fetch(albumUrl, {
+      method: "GET",
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data, "data almbum");
+        console.log(data.tracks.data[0], "data.tracks.data[0] return");
+        resolve(data.tracks.data); // Risolvi la promise con i dati desiderati
+      })
+      .catch((error) => {
+        console.error("Errore durante la fetch:", error);
+        reject(error); // Respinta della promise in caso di errore
+      });
+  });
+}
+
 document.addEventListener("DOMContentLoaded", function () {
-  playBtn.forEach(
-    (btn) =>
-      (btn.onclick = () => handlePlayClick(arraySongs[currentSongIndex], btn))
-  );
-  prevBtn.onclick = () => handlePrevNextClick(false);
-  nextBtn.onclick = () => handlePrevNextClick(true);
+  if (!window.location.toString().toLowerCase().includes("album.html")) {
+    playBtn.forEach(
+      (btn) =>
+        (btn.onclick = () => {
+          handlePlayClick(arraySongs[currentSongIndex]);
+        })
+    );
+  }
+  if (window.location.toString().toLowerCase().includes("album.html")) {
+    getDataAlbum()
+      .then((initialTrack) => {
+        console.log(initialTrack, "initial track album");
+        playBtn.forEach(
+          (btn) =>
+            (btn.onclick = () => {
+              handlePlayClick(initialTrack[currentSongIndex]);
+            })
+        );
+        prevBtn.onclick = () => handlePrevNextClick(false);
+        nextBtn.onclick = () => handlePrevNextClick(true);
+      })
+      .catch((error) => {
+        console.error("Errore durante il recupero dei dati dell'album:", error);
+        // Gestisci l'errore in modo appropriato
+      });
+  }
 });
 
 /*** HANDLE SONG with the actionBar (play|pause|next|prev) ***/
 function initializeAudio(crrSng) {
-  console.log(songToPlay, "songToPlay");
-  console.log(crrSng, "crrSng");
   if (!songToPlay || songToPlay.src !== crrSng.preview) {
     songToPlay = new Audio(crrSng.preview);
     songToPlay.onended = function () {
@@ -39,9 +78,9 @@ function handlePlayClick(crrSng) {
   initializeAudio(crrSng);
   if (!isPlaying) {
     playPause();
+    playPauseIcons(isPlaying);
     songTrackBar(songToPlay);
     songTimeDuration(songToPlay);
-    playPauseIcons(isPlaying);
     isPlaying = true;
   } else {
     playPauseIcons(isPlaying);
@@ -72,9 +111,8 @@ function playPause() {
   }
 }
 function handlePrevNextClick(isNext) {
-  playPauseIcons(isPlaying);
-
   if (isPlaying) {
+    playPauseIcons(isPlaying);
     songToPlay.pause();
     isPlaying = false;
   }
@@ -87,6 +125,7 @@ function handlePrevNextClick(isNext) {
   // aziona la traccia solo se in riproduzione
   if (isPlaying) {
     playPause();
+    playPauseIcons(isPlaying);
     songTrackBar(songToPlay);
     songTimeDuration(songToPlay);
   }
