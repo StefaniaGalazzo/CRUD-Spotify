@@ -9,7 +9,6 @@
   -webkit-box-orient: vertical;
   max-height: 50px;
 }
-
 #hero-artist {
   position: absolute;
   top: 0;
@@ -20,35 +19,31 @@
   display: grid;
   align-content: center;
 }
-
 .text-hero {
   position: absolute;
   bottom: 50px;
   left: 20px;
 }
-
 .scrollbar::-webkit-scrollbar-track {
   -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
   border-radius: 10px;
-  background-color: rgba(54, 16, 225, 0);
+  background-color: #3610e100;
 }
 
 .scrollbar::-webkit-scrollbar {
   width: 12px;
-  background-color: rgba(238, 11, 11, 0);
+  background-color: #ee0b0b00;
 }
 
 .scrollbar::-webkit-scrollbar-thumb {
   border-radius: 2px;
   width: 5px;
   -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
-  background-color: rgba(255, 255, 255, 0.3607843137);
+  background-color: #ffffff5c;
 }
-
 .bg-linear-dark {
   background-image: linear-gradient(to top, #020202 35%, #2f2f2f);
 }
-
 .bg-green {
   background-color: var(--greenSpoty);
 }
@@ -60,23 +55,18 @@
 .close-btn {
   cursor: pointer;
 }
-
 .bi-people {
   cursor: pointer;
 }
-
 .bg-linear-to-trasp {
-  background-image: linear-gradient(to top, #191919 60%, rgba(0, 0, 0, 0.1607843137));
+  background-image: linear-gradient(to top, #191919 60%, #00000029);
 }
-
 .color-green {
   color: var(--greenSpoty);
 }
-
 .fs-11px {
   font-size: 11px;
 }
-
 .toBlur {
   filter: blur(5rem);
   background-repeat: no-repeat;
@@ -88,45 +78,46 @@
   left: 0;
   max-height: 50vh;
 }
-
 .cardPlay {
   position: relative;
+  &:hover {
+    .audioWrapper {
+      display: grid;
+    }
+  }
 }
-.cardPlay:hover .audioWrapper {
-  display: grid;
-}
-
 .audioWrapper {
   display: none;
   position: absolute;
   top: 10px;
   right: 10px;
-  width: 60px;
-  height: 60px;
+  width: clamp(60px, 60px, 60px);
+  height: clamp(60px, 60px, 60px);
   border-radius: 100px;
   overflow: hidden;
   align-content: center;
   justify-content: start;
   box-shadow: 0 0 18px 5px rgba(0, 0, 0, 0.9);
   background-color: var(--greenSpoty);
+  &:hover {
+    &::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: #00030131;
+      pointer-events: none;
+    }
+  }
 }
-.audioWrapper:hover::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 3, 1, 0.1921568627);
-  pointer-events: none;
-}
-
 audio {
   padding: 0;
+  &::-webkit-media-controls-panel {
+    background-color: var(--greenSpoty);
+    padding: 0;
+  }
+  &::-webkit-media-controls-play-button {
+    flex-basis: 60px;
+  }
 }
-audio::-webkit-media-controls-panel {
-  background-color: var(--greenSpoty);
-  padding: 0;
-}
-audio::-webkit-media-controls-play-button {
-  flex-basis: 60px;
-}/*# sourceMappingURL=style.css.map */
