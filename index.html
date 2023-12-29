@@ -202,7 +202,8 @@
 
           <!-- COLONNA CENTRALE -->
           <div
-            class="col-8 py-3 px-4 bg-linear-dark position-relative bg-top-album-page overflow-y-scroll scrollbar overflow-x-hidden"
+            id="centralCol"
+            class="col py-3 px-4 bg-linear-dark position-relative bg-top-album-page overflow-y-scroll scrollbar overflow-x-hidden"
             style="max-height: calc(100vh - 88px)"
           >
             <div class="row sticky-top">
@@ -334,57 +335,13 @@
                     </div>
                   </div>
                 </div>
-              </div>
-              <div class="col-4">
-                <div class="card border-0 mb-3" style="max-width: 540px">
-                  <div class="row g-0">
-                    <div class="col overflow-hidden" style="max-width: 80px">
-                      <img
-                        src="https://images.unsplash.com/photo-1679850988136-5c5d78237d03?q=80&w=2063&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                        class="img-fluid h-100 rounded-start"
-                        alt="img-album"
-                      />
-                    </div>
-                    <div class="col-md-8 text-white">
-                      <div class="card-body px-3 p-2">
-                        <p class="card-text">
-                          <small
-                            >Early Staged Emily syndrome (sett-ott 2022)</small
-                          >
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-4">
-                <div class="card border-0 mb-3" style="max-width: 540px">
-                  <div class="row g-0">
-                    <div class="col overflow-hidden" style="max-width: 80px">
-                      <img
-                        src="https://images.unsplash.com/photo-1679850988136-5c5d78237d03?q=80&w=2063&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                        class="img-fluid h-100 rounded-start"
-                        alt="img-album"
-                      />
-                    </div>
-                    <div class="col-md-8 text-white">
-                      <div class="card-body px-3 p-2">
-                        <p class="card-text">
-                          <small
-                            >Early Staged Emily syndrome (sett-ott 2022)</small
-                          >
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
               </div> -->
             </div>
 
             <h5 class="text-white my-3">Altro di ciò che ti piace</h5>
             <div id="containerAltroPiace" class="row row-cols-5 g-3">
-              <div class="col">
-                <!-- <div class="card p-3 border-0 bg-dark-grey">
+              <!--  <div class="col">
+                 <div class="card p-3 border-0 bg-dark-grey">
                   <img
                     src="https://images.unsplash.com/photo-1679850988136-5c5d78237d03?q=80&w=2063&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
                     class="rounded-3"
@@ -396,72 +353,8 @@
                       Lorem ipsum dolor sit amet consectetur adipisicing elit.
                     </small>
                   </div>
-                </div> -->
-              </div>
-              <div class="col">
-                <div class="card p-3 border-0 bg-dark-grey">
-                  <img
-                    src="https://images.unsplash.com/photo-1679850988136-5c5d78237d03?q=80&w=2063&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                    class="rounded-3"
-                    alt="cio-che-ti-piace"
-                  />
-                  <div class="card-body pt-3 p-0">
-                    <h6 class="card-title text-white">Card title</h6>
-                    <small class="card-text">
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    </small>
-                  </div>
-                  <!-- <a href="#" class="btn btn-primary">PLAY</a> -->
-                </div>
-              </div>
-              <div class="col">
-                <div class="card p-3 border-0 bg-dark-grey">
-                  <img
-                    src="https://images.unsplash.com/photo-1679850988136-5c5d78237d03?q=80&w=2063&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                    class="rounded-3"
-                    alt="cio-che-ti-piace"
-                  />
-                  <div class="card-body pt-3 p-0">
-                    <h6 class="card-title text-white">Card title</h6>
-                    <small class="card-text">
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    </small>
-                  </div>
-                  <!-- <a href="#" class="btn btn-primary">PLAY</a> -->
-                </div>
-              </div>
-              <div class="col">
-                <div class="card p-3 border-0 bg-dark-grey">
-                  <img
-                    src="https://images.unsplash.com/photo-1679850988136-5c5d78237d03?q=80&w=2063&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                    class="rounded-3"
-                    alt="cio-che-ti-piace"
-                  />
-                  <div class="card-body pt-3 p-0">
-                    <h6 class="card-title text-white">Card title</h6>
-                    <small class="card-text">
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    </small>
-                  </div>
-                  <!-- <a href="#" class="btn btn-primary">PLAY</a> -->
-                </div>
-              </div>
-              <div class="col">
-                <div class="card p-3 border-0 bg-dark-grey">
-                  <img
-                    src="https://images.unsplash.com/photo-1679850988136-5c5d78237d03?q=80&w=2063&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                    class="rounded-3"
-                    alt="cio-che-ti-piace"
-                  />
-                  <div class="card-body pt-3 p-0">
-                    <h6 class="card-title text-white">Card title</h6>
-                    <small class="card-text">
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    </small>
-                  </div>
-                  <!-- <a href="#" class="btn btn-primary">PLAY</a> -->
-                </div>
-              </div>
+                </div> 
+              </div>-->
             </div>
           </div>
           <!-- fine colonna centrale -->
@@ -475,8 +368,8 @@
               <div class="col col-2 fs-5">
                 <i id="closeRight" class="bi-person-plus"></i>
               </div>
-              <div class="col col-2 fs-5">
-                <span class="close-btn" onclick="nascondiColonna()">x</span>
+              <div class="closeBtn col col-2 fs-5">
+                <i class="bi bi-x"></i>
               </div>
             </div>
             <div

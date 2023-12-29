@@ -1,9 +1,12 @@
-:root {
-  --greenSpoty: #1dd65f;
+$greenSpoty: #1dd65f;
+html,
+body {
+  transition: all 0.3s ease-in-out;
+  scroll-behavior: smooth;
 }
 i {
   &:hover {
-    color: var(--greenSpoty);
+    color: $greenSpoty;
   }
 }
 #songTitleActionBar {
@@ -49,7 +52,7 @@ i {
   background-image: linear-gradient(to top, #020202 35%, #2f2f2f);
 }
 .bg-green {
-  background-color: var(--greenSpoty);
+  background-color: $greenSpoty;
 }
 
 .bg-dark-grey {
@@ -66,7 +69,7 @@ i {
   background-image: linear-gradient(to top, #191919 60%, #00000029);
 }
 .color-green {
-  color: var(--greenSpoty);
+  color: $greenSpoty;
 }
 .fs-11px {
   font-size: 11px;
@@ -102,7 +105,7 @@ i {
   align-content: center;
   justify-content: start;
   box-shadow: 0 0 18px 5px rgba(0, 0, 0, 0.9);
-  background-color: var(--greenSpoty);
+  background-color: $greenSpoty;
   &:hover {
     &::after {
       content: "";
@@ -118,10 +121,15 @@ i {
 audio {
   padding: 0;
   &::-webkit-media-controls-panel {
-    background-color: var(--greenSpoty);
+    background-color: $greenSpoty;
     padding: 0;
   }
   &::-webkit-media-controls-play-button {
     flex-basis: 60px;
   }
+}
+#mainRightOpened {
+  transition: all 1s ease;
+  position: relative;
+  right: 0;
 }

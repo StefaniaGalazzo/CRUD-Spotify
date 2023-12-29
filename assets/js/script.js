@@ -139,29 +139,6 @@ function printSongs() {
     containerAltroPiace.appendChild(newCard);
   }
 }
-// function printJumbo(crrSng) {
-//   const jumboTitle = document.getElementById("jumboTitle");
-//   const imgsCover = document.querySelectorAll(".imgsCover");
-//   const type = document.querySelectorAll(".type");
-//   const artist = document.querySelectorAll(".artist");
-//   crrSng ? "" : (crrSng = arraySongs[0]);
-//   jumboTitle.innerText = crrSng.title;
-//   type.forEach((el) => {
-//     el.innerText = crrSng?.type;
-//   });
-//   artist.forEach((el) => {
-//     el.innerText = crrSng?.artist.name;
-//   });
-//   imgsCover.forEach((el) => {
-//     el.setAttribute("src", crrSng?.album.cover);
-//   });
-//   // print actionbar side left
-//   const songTitleActionBar = document.getElementById("songTitleActionBar");
-//   const artistTitleActionBar = document.getElementById("artistTitleActionBar");
-//   songTitleActionBar.setAttribute("title", `${crrSng?.title}`);
-//   songTitleActionBar.innerText = crrSng?.title;
-//   artistTitleActionBar.innerText = crrSng?.artist.name;
-// }
 
 // cambio pagina
 function goOnPage(page, id) {
@@ -181,23 +158,23 @@ function goForward() {
   window.history.forward();
 }
 
-function nascondiColonna() {
-  let mainRightOpened = document.getElementById("mainRightOpened");
-  let colCentral = document.querySelector(".col-8");
-  mainRightOpened.style.display = "none";
-  colCentral.classList.add("col-10");
-}
 document.addEventListener("DOMContentLoaded", function () {
-  let rightColumn = document.getElementById("mainRightOpened");
-  let centerColumn = document.querySelector(".col-8");
-  let peopleIcon = document.getElementById("peopleIcon");
+  const mainRightOpened = document.getElementById("mainRightOpened");
+  const closeBtn = document.querySelector(".closeBtn");
+  const peopleIcon = document.getElementById("peopleIcon");
+  closeBtn.onclick = nascondiColonna;
+  peopleIcon.onclick = mostraColonnaDestra;
 
-  function mostraColonnaDestra() {
-    rightColumn.style.display = "block";
-    centerColumn.classList.remove("col-10");
-    centerColumn.classList.add("col-8");
+  function nascondiColonna() {
+    mainRightOpened.style.right = "-60%";
+    setTimeout(() => {
+      mainRightOpened.style.display = "none";
+    }, 300);
   }
-  peopleIcon.addEventListener("click", mostraColonnaDestra);
+  function mostraColonnaDestra() {
+    mainRightOpened.style.display = "block";
+    mainRightOpened.style.right = "0";
+  }
 });
 
 // buongiorno e buonasera!
