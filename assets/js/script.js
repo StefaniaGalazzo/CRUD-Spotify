@@ -227,7 +227,7 @@ function printSongs() {
     const newCard = document.createElement("div");
     newCard.classList.add("col");
     newCard.innerHTML = `
-                  <div class="card h-100 p-3 border-0 bg-dark-grey">
+                  <div class="cardPlay card h-100 p-3 border-0 bg-dark-grey">
                     <img
                       src="${arraySongs[i].album.cover}"
                     />
@@ -239,10 +239,12 @@ function printSongs() {
                       <p class="mt-auto card-text">
                       ${arraySongs[i].duration}sec
                       </p>
-                      <audio controls class='w-100'>
-                        <source src="${arraySongs[i].preview}" type="audio/mp3">
-                        Your browser does not support the audio element.
-                      </audio>
+                      <div class='audioWrapper'>
+                       <audio controls>
+                         <source src="${arraySongs[i].preview}" type="audio/mp3">
+                         Your browser does not support the audio element.
+                       </audio>
+                      </div>
                     </div>
                   </div>
       `;
