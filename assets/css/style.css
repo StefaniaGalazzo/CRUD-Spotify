@@ -2,6 +2,10 @@
   --greenSpoty: #1dd65f;
 }
 
+i:hover {
+  color: var(--greenSpoty);
+}
+
 #songTitleActionBar {
   overflow: hidden;
   text-overflow: ellipsis;
