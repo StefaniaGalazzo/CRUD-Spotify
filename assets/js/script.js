@@ -22,8 +22,9 @@ window.onload = () => {
     () => {
       handleNavigation();
       playBtn.forEach(
-        (el) =>
-          (el.onclick = () => handlePlayClick(arraySongs[currentSongIndex]))
+        (btn) =>
+          (btn.onclick = () =>
+            handlePlayClick(arraySongs[currentSongIndex], btn))
       );
       prevBtn.onclick = () => handlePrevNextClick(false);
       nextBtn.onclick = () => handlePrevNextClick(true);
@@ -45,7 +46,7 @@ function getData(query) {
     .catch((error) => console.error("Errore durante la fetch:", error));
 }
 
-/*** HANDLE SONG (play|pause|next|prev) ***/
+/*** HANDLE SONG with the actionBar (play|pause|next|prev) ***/
 function initializeAudio(crrSng) {
   if (!songToPlay || songToPlay.src !== crrSng.preview) {
     songToPlay = new Audio(crrSng.preview);
@@ -54,18 +55,31 @@ function initializeAudio(crrSng) {
     };
   }
 }
-function handlePlayClick(crrSng) {
+function handlePlayClick(crrSng, btn) {
   initializeAudio(crrSng);
   if (!isPlaying) {
     playPause();
     songTrackBar(songToPlay);
     songTimeDuration(songToPlay);
+    playPauseIcons(isPlaying);
     isPlaying = true;
-    // handleSongTime(crrSng);
   } else {
-    // Gestire la pausa o l'arresto della traccia
+    playPauseIcons(isPlaying);
     songToPlay.pause();
     isPlaying = false;
+  }
+}
+function playPauseIcons(isPlaying) {
+  if (!isPlaying) {
+    playBtn[0].classList.remove("bi-play-circle-fill");
+    playBtn[1].classList.remove("bi-play-circle-fill");
+    playBtn[0].classList.add("bi-pause-circle-fill");
+    playBtn[1].classList.add("bi-pause-circle-fill");
+  } else {
+    playBtn[0].classList.remove("bi-pause-circle-fill");
+    playBtn[1].classList.remove("bi-pause-circle-fill");
+    playBtn[0].classList.add("bi-play-circle-fill");
+    playBtn[1].classList.add("bi-play-circle-fill");
   }
 }
 function playPause() {
@@ -137,6 +151,7 @@ function padZero(number) {
 }
 /* end handle actions on song */
 
+//
 // create array and put datas in local storage
 function handleCreateArrays(data) {
   createArrayAlbums(data);
@@ -144,7 +159,6 @@ function handleCreateArrays(data) {
   localStorage.setItem("arraySongs", JSON.stringify(arraySongs));
   localStorage.setItem("arrayAlbums", JSON.stringify(arrayAlbums));
 }
-
 function createArrayAlbums(data) {
   for (let i = 0; i < data.data.length; i++) {
     let album = data.data[i].album;
@@ -154,7 +168,6 @@ function createArrayAlbums(data) {
     if (!isExistingAlbum) arrayAlbums.push(album);
   }
 }
-
 function createArraySongs(data) {
   for (let i = 0; i < data.data.length; i++) {
     let song = data.data[i];
