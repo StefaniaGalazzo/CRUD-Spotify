@@ -55,7 +55,7 @@ function initializeAudio(crrSng) {
     };
   }
 }
-function handlePlayClick(crrSng, btn) {
+function handlePlayClick(crrSng) {
   initializeAudio(crrSng);
   if (!isPlaying) {
     playPause();
@@ -92,6 +92,8 @@ function playPause() {
   }
 }
 function handlePrevNextClick(isNext) {
+  playPauseIcons(isPlaying);
+
   if (isPlaying) {
     songToPlay.pause();
     isPlaying = false;
