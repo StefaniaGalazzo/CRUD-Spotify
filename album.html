@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Spotify</title>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
@@ -172,26 +173,7 @@
                 style="max-height: 42vh; min-height: 42vh"
               >
                 <ul id="containerSideList" class="list-group">
-                  <!-- <li class="my-2">Elemento 1</li>
-                  <li class="my-2">Elemento 2</li>
-                  <li class="my-2">Elemento 3</li>
-                  <li class="my-2">Elemento 4</li>
-                  <li class="my-2">Elemento 5</li>
-                  <li class="my-2">Elemento 1</li>
-                  <li class="my-2">Elemento 2</li>
-                  <li class="my-2">Elemento 3</li>
-                  <li class="my-2">Elemento 4</li>
-                  <li class="my-2">Elemento 5</li>
-                  <li class="my-2">Elemento 1</li>
-                  <li class="my-2">Elemento 2</li>
-                  <li class="my-2">Elemento 3</li>
-                  <li class="my-2">Elemento 4</li>
-                  <li class="my-2">Elemento 5</li>
-                  <li class="my-2">Elemento 1</li>
-                  <li class="my-2">Elemento 2</li>
-                  <li class="my-2">Elemento 3</li>
-                  <li class="my-2">Elemento 4</li>
-                  <li class="my-2">Elemento 5</li> -->
+                  <!-- <li class="my-2">Elemento 1</li> -->
                 </ul>
               </div>
             </nav>
@@ -273,11 +255,12 @@
               id="containerAlbum"
               class="row position-relative mt-4 p-1 px-4 align-items-center"
             >
-              <!-- <div
+              <div
                 class="col-2 p-0 overflow-hidden me-3"
                 style="max-height: 170px; min-width: 180px"
               >
                 <img
+                  class="imgsCover"
                   src="https://images.unsplash.com/photo-1543366156-5b1f92176c31?q=80&w=1885&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
                   width="100%"
                   alt="cover album"
@@ -291,28 +274,25 @@
                     album
                   </p>
                 </div>
-                <h1 id=" " class="text-white fw-bold">Nome Album</h1>
-
-                <p class="mb-3 fs-11px text-white">
+                <h1 id="jumboTitle" class="text-white">Nome Album</h1>
+                <p class="mb-3 me-2 fs-11px text-white">
                   <img
+                    class="imgsArtist rounded-pill me-2"
                     src="
                     https://images.unsplash.com/photo-1587300003388-59208cc962cb?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                    alt="image artista"
+                    alt="image album"
                     width="20px"
                     height="20px"
-                    class="rounded-pill"
                   />
-                  <span class="artist fw-bold">Artista</span> •
-                  <span>Anno</span> • <span>numero brani,</span
-                  ><span class="fw-light"> Durata</span>
+                  <span class="artist"
+                    >Artista • Anno • Numero brani, Durata</span
+                  >
                 </p>
-              </div> -->
+              </div>
             </div>
             <!--fine hero-->
 
             <!-- inizio parte centrale bassa -->
-
-            <!-- colonne unite, in caso da suddividere in colonne ma senza aggiungere altri elementi le colonne sono troppo wide e i tasti troppo lontani -->
             <div
               class="bg-linear-to-trasp position-relative p-3 pb-5 mt-3"
               style="min-height: 100%"
@@ -321,11 +301,11 @@
                 <div
                   class="col d-flex justify-content-start align-items-center fs-4"
                 >
-                  <button
-                    class="playBtn btn rounded-circle bg-green text-black fw-bold fs-4 d-inline me-2"
-                  >
-                    <i class="bi bi-play-fill"></i>
-                  </button>
+                  <div class="col-1 d-inline me-2">
+                    <i
+                      class="playBtn color-green display-5 bi bi-play-circle-fill"
+                    ></i>
+                  </div>
                   <div class="d-inline m-2">
                     <i class="bi bi-heart text-white"></i>
                   </div>
@@ -384,8 +364,8 @@
               </div>
               <!-- fine parte centrale bassa -->
             </div>
-            <!-- fine colonna centrale -->
           </div>
+          <!-- fine colonna centrale -->
 
           <!-- SIDEBAR  DESTRA -->
           <div id="mainRightOpened" class="col-2">
@@ -472,9 +452,14 @@
                 class="col-3 ms-2 overflow-hidden rounded p-0"
                 style="max-height: 70px; max-width: 70px"
               >
-                <img class="imgsCover" width="100px" alt="album" />
+                <img
+                  class="imgsCover"
+                  src="https://images.unsplash.com/photo-1543366156-5b1f92176c31?q=80&w=1885&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                  width="100px"
+                  alt="album"
+                />
               </div>
-              <div class="col-3 px-2">
+              <div class="col-4 px-2">
                 <h5 id="songTitleActionBar" class="text-white mb-0">Title</h5>
                 <span
                   id="artistTitleActionBar"
@@ -483,7 +468,10 @@
                 >
               </div>
               <div class="col">
-                <i class="bi bi-heart text-white"></i>
+                <i
+                  title="qui metto il title"
+                  class="bi bi-heart text-white"
+                ></i>
               </div>
             </div>
           </div>
@@ -509,19 +497,24 @@
               </div>
             </div>
             <div class="row justify-content-center align-items-center">
-              <div class="col">
-                <span class="fs-6 text-secondary">0:58</span>
+              <div class="col p-0">
+                <span id="currentTime" class="fs-6 text-nowrap text-secondary"
+                  >00:00</span
+                >
               </div>
               <div class="col-10">
                 <input
                   id="barTrack"
                   type="range"
                   class="w-100"
+                  value="0"
                   data-label="song seconds"
                 />
               </div>
-              <div class="col">
-                <span class="fs-6 text-secondary">0:58</span>
+              <div class="col p-0">
+                <span id="timeLeft" class="fs-6 text-nowrap text-secondary"
+                  >00:00</span
+                >
               </div>
             </div>
           </div>
@@ -558,6 +551,7 @@
       integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
       crossorigin="anonymous"
     ></script>
-    <script src="./assets/js/album.js"></script>
+    <script type="module" src="./assets/js/actionsBar.js"></script>
+    <script type="module" src="./assets/js/album.js"></script>
   </body>
 </html>

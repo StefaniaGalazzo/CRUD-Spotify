@@ -1,9 +1,11 @@
-:root {
-  --greenSpoty: #1dd65f;
+html,
+body {
+  transition: all 0.3s ease-in-out;
+  scroll-behavior: smooth;
 }
 
 i:hover {
-  color: var(--greenSpoty);
+  color: #1dd65f;
 }
 
 #songTitleActionBar {
@@ -54,7 +56,7 @@ i:hover {
 }
 
 .bg-green {
-  background-color: var(--greenSpoty);
+  background-color: #1dd65f;
 }
 
 .bg-dark-grey {
@@ -74,7 +76,7 @@ i:hover {
 }
 
 .color-green {
-  color: var(--greenSpoty);
+  color: #1dd65f;
 }
 
 .fs-11px {
@@ -112,7 +114,7 @@ i:hover {
   align-content: center;
   justify-content: start;
   box-shadow: 0 0 18px 5px rgba(0, 0, 0, 0.9);
-  background-color: var(--greenSpoty);
+  background-color: #1dd65f;
 }
 .audioWrapper:hover::after {
   content: "";
@@ -128,9 +130,15 @@ audio {
   padding: 0;
 }
 audio::-webkit-media-controls-panel {
-  background-color: var(--greenSpoty);
+  background-color: #1dd65f;
   padding: 0;
 }
 audio::-webkit-media-controls-play-button {
   flex-basis: 60px;
+}
+
+#mainRightOpened {
+  transition: all 1s ease;
+  position: relative;
+  right: 0;
 }/*# sourceMappingURL=style.css.map */
