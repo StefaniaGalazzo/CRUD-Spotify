@@ -1,9 +1,17 @@
 // script for the <div id="mainActions"> in all html pages
-let pageURL = window.location.search;
-const productId = new URLSearchParams(pageURL).get("id");
-const albumUrl = `https://striveschool-api.herokuapp.com/api/deezer/album/${productId}`;
+import { getDataAlbum } from "./album.js";
 
-const myUrl = "https://striveschool-api.herokuapp.com/api/deezer/search?q=";
+const isHomePage = window.location
+  .toString()
+  .toLowerCase()
+  .includes("index.html");
+const isAlbumPage = window.location
+  .toString()
+  .toLowerCase()
+  .includes("album.html");
+
+const baseURL = "https://striveschool-api.herokuapp.com/api/deezer/";
+const queryURL = `${baseURL}search?q=`;
 
 const playBtn = document.querySelectorAll(".playBtn");
 const prevBtn = document.querySelector("#prevBtn");
@@ -18,49 +26,34 @@ let isTrackChanged = false;
 let arraySongs = localStorage.getItem("arraySongs");
 arraySongs = JSON.parse(arraySongs);
 
-function getDataAlbum() {
-  return new Promise((resolve, reject) => {
-    fetch(albumUrl, {
-      method: "GET",
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        console.log(data, "data almbum");
-        console.log(data.tracks.data[0], "data.tracks.data[0] return");
-        resolve(data.tracks.data); // Risolvi la promise con i dati desiderati
-      })
-      .catch((error) => {
-        console.error("Errore durante la fetch:", error);
-        reject(error); // Respinta della promise in caso di errore
-      });
-  });
-}
-
 document.addEventListener("DOMContentLoaded", function () {
-  if (!window.location.toString().toLowerCase().includes("album.html")) {
+  if (isHomePage) {
     playBtn.forEach(
       (btn) =>
         (btn.onclick = () => {
           handlePlayClick(arraySongs[currentSongIndex]);
         })
     );
+    prevBtn.onclick = () => handlePrevNextClick(false);
+    nextBtn.onclick = () => handlePrevNextClick(true);
   }
-  if (window.location.toString().toLowerCase().includes("album.html")) {
+  if (isAlbumPage) {
     getDataAlbum()
       .then((initialTrack) => {
-        console.log(initialTrack, "initial track album");
+        console.log(initialTrack[currentSongIndex], "initial track album");
         playBtn.forEach(
           (btn) =>
             (btn.onclick = () => {
               handlePlayClick(initialTrack[currentSongIndex]);
             })
         );
-        prevBtn.onclick = () => handlePrevNextClick(false);
-        nextBtn.onclick = () => handlePrevNextClick(true);
+        prevBtn.onclick = () =>
+          handlePrevNextClick(false, initialTrack[currentSongIndex]);
+        nextBtn.onclick = () =>
+          handlePrevNextClick(true, initialTrack[currentSongIndex]);
       })
       .catch((error) => {
         console.error("Errore durante il recupero dei dati dell'album:", error);
-        // Gestisci l'errore in modo appropriato
       });
   }
 });
@@ -88,6 +81,38 @@ function handlePlayClick(crrSng) {
     isPlaying = false;
   }
 }
+function handlePrevNextClick(isNext, firstTrack) {
+  if (isPlaying) {
+    playPauseIcons(isPlaying);
+    songToPlay.pause();
+    isPlaying = false;
+  }
+  currentSongIndex =
+    (currentSongIndex + (isNext ? 1 : -1) + arraySongs.length) %
+    arraySongs.length;
+  if (isHomePage) {
+    printJumbo(arraySongs[currentSongIndex]);
+    printActionBarSideLeft(arraySongs[currentSongIndex]);
+  }
+  if (isAlbumPage) {
+    console.log(firstTrack, "first track prevnext");
+    printJumbo(firstTrack);
+    printActionBarSideLeft(firstTrack);
+  }
+  initializeAudio(arraySongs[currentSongIndex]);
+  isTrackChanged = true;
+  // aziona la traccia solo se in riproduzione
+  if (isPlaying) {
+    playPause();
+    playPauseIcons(isPlaying);
+    songTrackBar(songToPlay);
+    songTimeDuration(songToPlay);
+  }
+  if (isTrackChanged) {
+    songTrackBar(songToPlay);
+    songTimeDuration(songToPlay);
+  }
+}
 function playPauseIcons(isPlaying) {
   if (!isPlaying) {
     playBtn[0].classList.remove("bi-play-circle-fill");
@@ -108,30 +133,6 @@ function playPause() {
   } else {
     console.log("PLAY");
     songToPlay.play();
-  }
-}
-function handlePrevNextClick(isNext) {
-  if (isPlaying) {
-    playPauseIcons(isPlaying);
-    songToPlay.pause();
-    isPlaying = false;
-  }
-  currentSongIndex =
-    (currentSongIndex + (isNext ? 1 : -1) + arraySongs.length) %
-    arraySongs.length;
-  printJumbo(arraySongs[currentSongIndex]);
-  initializeAudio(arraySongs[currentSongIndex]);
-  isTrackChanged = true;
-  // aziona la traccia solo se in riproduzione
-  if (isPlaying) {
-    playPause();
-    playPauseIcons(isPlaying);
-    songTrackBar(songToPlay);
-    songTimeDuration(songToPlay);
-  }
-  if (isTrackChanged) {
-    songTrackBar(songToPlay);
-    songTimeDuration(songToPlay);
   }
 }
 function songTrackBar(track) {
@@ -173,31 +174,55 @@ function padZero(number) {
 /* end handle actions on song */
 
 function printJumbo(crrSng) {
+  if (isHomePage) crrSng ? "" : (crrSng = arraySongs[0]);
   const jumboTitle = document.getElementById("jumboTitle");
   const imgsCover = document.querySelectorAll(".imgsCover");
   const type = document.querySelectorAll(".type");
   const artist = document.querySelectorAll(".artist");
-  crrSng ? "" : (crrSng = arraySongs[0]);
-  jumboTitle.innerText = crrSng.title;
+  jumboTitle.innerText = crrSng?.title || crrSng?.album.title;
   type.forEach((el) => {
-    el.innerText = crrSng?.type;
+    el.innerText = crrSng?.type || crrSng?.album.type;
   });
   artist.forEach((el) => {
-    el.innerText = crrSng?.artist.name;
+    el.innerText = isHomePage
+      ? crrSng?.artist?.name
+      : `${crrSng?.artist?.name}  •  ${crrSng?.release_date.replaceAll(
+          "-",
+          "/"
+        )}  •  ${crrSng?.nb_tracks} brani, ${(crrSng?.duration / 60)
+          .toFixed(2)
+          .padEnd(4, "0")}min `;
   });
   imgsCover.forEach((el) => {
-    el.setAttribute("src", crrSng?.album.cover);
+    el.setAttribute("src", crrSng?.album?.cover || crrSng?.cover);
   });
+  if (isAlbumPage) {
+    const imgsArtist = document.querySelector(".imgsArtist");
+    imgsArtist.setAttribute("src", crrSng?.artist?.picture_small);
+  }
+  //separare la print dell'actionbar oltre a condizionare la printjumbo in base alla pagina
   // print actionbar side left
+  printActionBarSideLeft(crrSng);
+}
+function printActionBarSideLeft(crrSng) {
   const songTitleActionBar = document.getElementById("songTitleActionBar");
   const artistTitleActionBar = document.getElementById("artistTitleActionBar");
-  songTitleActionBar.setAttribute("title", `${crrSng?.title}`);
-  songTitleActionBar.innerText = crrSng?.title;
-  artistTitleActionBar.innerText = crrSng?.artist.name;
+  // songTitleActionBar.innerText = "";
+  // artistTitleActionBar.innerText = "";
+  if (isHomePage) {
+    songTitleActionBar.setAttribute("title", `${crrSng?.title}`);
+    songTitleActionBar.innerText = crrSng?.title;
+    artistTitleActionBar.innerText = crrSng?.artist?.name;
+  }
+  if (isAlbumPage) {
+    console.log(crrSng, "crrsong printsidelefttt albumpage");
+    songTitleActionBar.innerText = crrSng?.title;
+    artistTitleActionBar.innerText = crrSng?.artist?.name;
+  }
 }
-
 export {
-  myUrl,
+  queryURL,
+  baseURL,
   playBtn,
   prevBtn,
   nextBtn,
@@ -210,4 +235,5 @@ export {
   handlePlayClick,
   handlePrevNextClick,
   printJumbo,
+  printActionBarSideLeft,
 };

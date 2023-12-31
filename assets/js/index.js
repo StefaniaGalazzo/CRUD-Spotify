@@ -8,18 +8,17 @@ document.addEventListener("DOMContentLoaded", function () {
   Promise.all([getData("alt-j"), getData("queen"), getData("dua-lipa")]).then(
     () => {
       handleNavigation();
+      actionsBar.printJumbo(arraySongs[0]);
     }
   );
 });
 
-//recupero i dati dall API e li uso per riempire gli array
 function getData(query) {
-  fetch(`${actionsBar.myUrl}[${query}]`, {
+  fetch(`${actionsBar.queryURL}[${query}]`, {
     method: "GET",
   })
     .then((response) => response.json())
     .then((data) => {
-      // console.log(data)
       handleCreateArrays(data);
       handlePrintData();
     })
@@ -58,7 +57,7 @@ function handlePrintData() {
   printAlbums();
   printSideList();
   printSongs();
-  actionsBar.printJumbo();
+  // actionsBar.printJumbo(arraySongs[0]);
 }
 function printAlbums() {
   const containerBuonasera = document.getElementById("containerBuonasera");
